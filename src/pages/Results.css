@@ -1,0 +1,214 @@
+/* ═══════════════════════════════════
+   Results / Triage Report Page
+   ═══════════════════════════════════ */
+
+.results-page {
+  padding-top: 100px;
+  padding-bottom: var(--space-16);
+  min-height: 100vh;
+}
+
+.results-header {
+  text-align: center;
+  margin-bottom: var(--space-10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-10);
+}
+
+/* Score Card */
+.score-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  text-align: center;
+}
+
+.score-visual {
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.score-ring { width: 100%; height: 100%; }
+
+.score-value {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-number {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border: 1px solid;
+}
+
+.score-action {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;
+  font-weight: 500;
+  border: 1px solid;
+  width: 100%;
+}
+
+/* Breakdown Card */
+.breakdown-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.breakdown-card h3 { font-size: 1.05rem; }
+
+.symptom-tags {
+  padding: var(--space-4);
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+}
+
+.breakdown-bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.breakdown-item {
+  animation: fade-in-up 0.5s ease both;
+}
+
+.breakdown-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.confidence-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--space-3) var(--space-4);
+  background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.2);
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  color: var(--routine-light);
+}
+
+/* Quick Actions */
+.quick-actions {
+  margin-bottom: var(--space-10);
+}
+
+.quick-actions h3 { margin-bottom: var(--space-6); }
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-5);
+}
+
+.action-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.action-card h4 { font-size: 1rem; color: var(--text-primary); }
+
+.action-arrow {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  color: var(--purple-light);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all var(--transition-fast);
+}
+
+.action-card:hover .action-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Doctor Recommendations */
+.doctor-recs h3 { margin-bottom: var(--space-6); }
+
+.doctor-rec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--space-5);
+}
+
+.doctor-rec-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.doc-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.doc-avatar { font-size: 2.2rem; }
+
+.doc-header > div { flex: 1; }
+.doc-header h4 { font-size: 0.95rem; }
+
+.doc-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.doc-actions {
+  display: flex;
+  gap: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-subtle);
+}
+
+@media (max-width: 768px) {
+  .results-grid { grid-template-columns: 1fr; }
+  .doctor-rec-grid { grid-template-columns: 1fr; }
+}

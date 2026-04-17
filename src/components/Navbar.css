@@ -1,0 +1,58 @@
+.navbar-links .active {
+  color: var(--purple-light) !important;
+}
+
+.emergency-btn {
+  animation: emergency-pulse 2s infinite;
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: var(--space-2);
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  margin: 0 var(--space-4);
+  border-radius: var(--radius-xl);
+  animation: fade-in-up 0.3s ease;
+}
+
+.mobile-menu a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.mobile-menu a:hover {
+  color: var(--text-primary);
+  background: var(--bg-surface);
+}
+
+.mobile-emergency {
+  color: var(--emergency) !important;
+  background: var(--emergency-bg);
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid rgba(239,68,68,0.3);
+}
+
+.navbar-emergency {
+  background: rgba(239,68,68,0.1) !important;
+  border-bottom-color: rgba(239,68,68,0.3) !important;
+}
+
+@media (max-width: 768px) {
+  .mobile-toggle { display: block; }
+}

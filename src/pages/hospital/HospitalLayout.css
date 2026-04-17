@@ -1,0 +1,315 @@
+/* ═══════════════════════════════════════════
+   HOSPITAL DASHBOARD – THEME OVERRIDES
+   ═══════════════════════════════════════════ */
+
+.hospital-sidebar {
+  background: #0b1628;
+}
+
+.hospital-logo-icon {
+  background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+}
+
+.hospital-sidebar .sidebar-link.active {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+.hospital-avatar {
+  background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+}
+
+.hospital-role-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 1.25rem;
+  padding: 0.4rem 0.75rem;
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 8px;
+  color: #60a5fa;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Emergency Control Panel ── */
+.emergency-panel {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.emergency-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, #fef2f2, #fff1f2);
+  border-bottom: 1px solid #fecaca;
+}
+
+.emergency-panel-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #dc2626;
+}
+
+.emergency-panel-count {
+  background: #dc2626;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.emergency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 1.25rem;
+}
+
+.emergency-case-card {
+  border: 1px solid #fecaca;
+  border-left: 4px solid #dc2626;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  background: #fffbfb;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  animation: pulse-emergency 2.5s infinite;
+}
+
+.emergency-case-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.emergency-case-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1e293b;
+}
+
+.emergency-case-time {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.emergency-case-condition {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.emergency-case-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.emergency-case-actions {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+/* Assignment Dropdown within Emergency Card */
+.assign-select {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: #334155;
+  background: white;
+  cursor: pointer;
+}
+
+.assign-select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* ── Patient Queue ── */
+.queue-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.queue-column {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.queue-column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.queue-column-header.emergency {
+  background: #fef2f2;
+  color: #dc2626;
+  border-bottom: 2px solid #fecaca;
+}
+
+.queue-column-header.urgent {
+  background: #fff7ed;
+  color: #ea580c;
+  border-bottom: 2px solid #fed7aa;
+}
+
+.queue-column-header.routine {
+  background: #f0fdf4;
+  color: #16a34a;
+  border-bottom: 2px solid #bbf7d0;
+}
+
+.queue-column-count {
+  padding: 0.15rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: white;
+}
+
+.queue-column-header.emergency .queue-column-count { background: #dc2626; }
+.queue-column-header.urgent .queue-column-count { background: #ea580c; }
+.queue-column-header.routine .queue-column-count { background: #16a34a; }
+
+.queue-list {
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.queue-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.queue-item:hover {
+  background: #eef2ff;
+  border-color: #e0e7ff;
+}
+
+.queue-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.queue-item-name {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #1e293b;
+}
+
+.queue-item-symptoms {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.queue-item-risk {
+  font-weight: 800;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* ── Load Analytics ── */
+.load-analytics {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.load-card {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  padding: 1.5rem;
+}
+
+.load-card h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.load-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.load-bar-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+  min-width: 80px;
+}
+
+.load-bar-track {
+  flex: 1;
+  height: 10px;
+  border-radius: 5px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.load-bar-fill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.6s ease;
+}
+
+.load-bar-value {
+  font-size: 0.8rem;
+  font-weight: 700;
+  min-width: 30px;
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .queue-grid {
+    grid-template-columns: 1fr;
+  }
+  .emergency-grid {
+    grid-template-columns: 1fr;
+  }
+}

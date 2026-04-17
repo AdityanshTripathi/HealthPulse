@@ -1,0 +1,386 @@
+.auth-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.auth-backdrop-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.auth-modal-card {
+  position: relative;
+  background: white;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-close-btn {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  background: rgba(241, 245, 249, 0.8);
+  border: none;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #64748b; cursor: pointer; z-index: 10;
+  transition: all 0.2s;
+}
+
+.auth-close-btn:hover { background: #e2e8f0; color: #0f172a; }
+
+.auth-tabs {
+  display: flex;
+  position: relative;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+  flex-shrink: 0;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 1.25rem 1rem;
+  background: transparent; border: none;
+  font-size: 0.95rem; font-weight: 600;
+  color: #64748b; cursor: pointer;
+  transition: color 0.2s; z-index: 2;
+}
+
+.auth-tab.active { color: #4f46e5; }
+
+.auth-tab-indicator {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 50%; height: 2px;
+  background: #4f46e5;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.auth-content-scroller {
+  width: 100%;
+  overflow: hidden;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.auth-content-inner {
+  display: flex;
+  width: 200%;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.auth-panel {
+  width: 50%;
+  padding: 1.75rem 2rem 2rem;
+  flex-shrink: 0;
+}
+
+.auth-modal-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.auth-modal-header h2 {
+  font-size: 1.5rem; font-weight: 700;
+  color: #1e293b; margin-bottom: 0.25rem;
+}
+
+.auth-modal-header p { color: #64748b; font-size: 0.9rem; }
+
+/* ── Role Selector ── */
+.role-selector {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.role-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.85rem 0.5rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.role-card:hover {
+  border-color: var(--role-color, #4f46e5);
+  background: #fafbff;
+}
+
+.role-card.active {
+  border-color: var(--role-color, #4f46e5);
+  background: color-mix(in srgb, var(--role-color) 6%, white);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--role-color) 15%, transparent);
+}
+
+.role-card-icon {
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.role-card-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.role-card-label {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #1e293b;
+}
+
+.role-card-desc {
+  font-size: 0.65rem;
+  color: #94a3b8;
+  line-height: 1.2;
+}
+
+.role-check {
+  position: absolute;
+  top: 6px; right: 6px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--role-color, #4f46e5);
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem; font-weight: 700;
+}
+
+/* ── Form Styles ── */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.modal-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.modal-input-group label {
+  font-size: 0.8rem; font-weight: 600; color: #334155;
+}
+
+.modal-password-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-forgot-link {
+  font-size: 0.75rem; color: #4f46e5;
+  text-decoration: none; font-weight: 500;
+}
+
+.modal-forgot-link:hover { text-decoration: underline; }
+
+.modal-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.modal-input-icon {
+  position: absolute;
+  left: 0.85rem;
+  color: #94a3b8;
+}
+
+.modal-input-wrapper input,
+.modal-select {
+  width: 100%;
+  padding: 0.65rem 0.85rem 0.65rem 2.4rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: #1e293b;
+  background: white;
+  transition: all 0.2s;
+}
+
+.modal-select {
+  padding-left: 0.85rem;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+}
+
+.modal-input-wrapper input:focus,
+.modal-select:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.modal-password-toggle {
+  position: absolute; right: 0.75rem;
+  background: none; border: none;
+  color: #94a3b8; cursor: pointer;
+  padding: 0.25rem;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Condition Chips */
+.condition-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.condition-chip {
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid #e2e8f0;
+  background: white;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.condition-chip:hover {
+  border-color: #c7d2fe;
+  background: #eef2ff;
+}
+
+.condition-chip.active {
+  border-color: #4f46e5;
+  background: #4f46e5;
+  color: white;
+}
+
+/* Department Input */
+.dept-input-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.modal-dept-input {
+  flex: 1;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: #1e293b;
+}
+
+.modal-dept-input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.dept-add-btn {
+  width: 40px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+  font-size: 1.2rem;
+  color: #4f46e5;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.dept-add-btn:hover {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+}
+
+/* Submit Button */
+.modal-submit-btn {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: white; border: none;
+  padding: 0.75rem;
+  border-radius: 10px;
+  font-size: 0.9rem; font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.4rem;
+}
+
+.modal-submit-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+}
+
+.modal-submit-btn:disabled, .modal-google-btn:disabled {
+  opacity: 0.7; cursor: not-allowed;
+}
+
+.modal-spinner { animation: spin 1s linear infinite; }
+
+.modal-divider {
+  margin: 1.25rem 0;
+  display: flex; align-items: center;
+  color: #94a3b8; font-size: 0.8rem;
+}
+
+.modal-divider::before, .modal-divider::after {
+  content: ''; flex: 1;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-divider span { padding: 0 1rem; }
+
+.modal-google-btn {
+  width: 100%;
+  background: white; color: #334155;
+  border: 1px solid #e2e8f0;
+  padding: 0.7rem; border-radius: 10px;
+  font-size: 0.9rem; font-weight: 600;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.75rem; transition: all 0.2s;
+}
+
+.modal-google-btn:hover:not(:disabled) {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .auth-modal-card { max-width: 100%; border-radius: 16px; }
+  .auth-panel { padding: 1.25rem 1.25rem 1.5rem; }
+  .role-selector { gap: 0.4rem; }
+  .role-card { padding: 0.65rem 0.35rem; }
+  .role-card-icon { width: 32px; height: 32px; }
+  .modal-form-row { grid-template-columns: 1fr; }
+}

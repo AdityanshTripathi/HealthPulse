@@ -1,0 +1,314 @@
+/* ═══════════════════════════════════
+   Appointment Booking Page
+   ═══════════════════════════════════ */
+
+.appointment-page {
+  padding-top: 100px;
+  padding-bottom: var(--space-16);
+  min-height: 100vh;
+}
+
+.appointment-header { margin-bottom: var(--space-6); }
+
+/* Progress Steps */
+.booking-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: var(--space-8);
+}
+
+.progress-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.step-active { color: var(--purple-light); }
+
+.step-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.step-active .step-circle {
+  background: var(--grad-primary);
+  border-color: var(--purple);
+  color: #fff;
+}
+
+.progress-line {
+  width: 60px;
+  height: 2px;
+  margin: 0 var(--space-3);
+  border-radius: 1px;
+}
+
+/* Layout */
+.appointment-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-6);
+  align-items: flex-start;
+}
+
+/* Doctor Sidebar */
+.appt-doctor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  position: sticky;
+  top: 90px;
+}
+
+.appt-doc-avatar { font-size: 3.5rem; }
+
+.appt-doc-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.appt-doc-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  text-align: left;
+}
+
+.appt-doc-meta span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.consult-type-picker {
+  display: flex;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.type-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: var(--space-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-sans);
+}
+
+.type-btn:hover { border-color: var(--border); }
+
+.type-active {
+  background: rgba(124,58,237,0.12) !important;
+  border-color: var(--border-strong) !important;
+  color: var(--purple-light) !important;
+}
+
+/* Step Content */
+.step-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  animation: fade-in-up 0.4s ease;
+}
+
+/* Calendar */
+.calendar-card h3 { font-size: 1rem; }
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+.cal-nav {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.cal-nav:hover { border-color: var(--border); color: var(--text-primary); }
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+}
+
+.cal-day-header {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  padding: 6px 0;
+}
+
+.cal-day {
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-sans);
+}
+
+.cal-day:hover:not(:disabled) { background: var(--bg-surface); color: var(--text-primary); }
+
+.cal-past { color: var(--text-muted); opacity: 0.3; cursor: not-allowed; }
+
+.cal-today {
+  border: 1px solid var(--border-strong);
+}
+
+.cal-selected {
+  background: var(--grad-primary) !important;
+  color: #fff !important;
+  font-weight: 700;
+  box-shadow: var(--shadow-purple);
+}
+
+/* Time Slots */
+.timeslots-card h3 { font-size: 1rem; margin-bottom: var(--space-4); }
+
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+}
+
+.slot-btn {
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-sans);
+}
+
+.slot-btn:hover:not(:disabled) { border-color: var(--border); color: var(--text-primary); }
+
+.slot-selected {
+  background: rgba(124,58,237,0.15) !important;
+  border-color: var(--border-strong) !important;
+  color: var(--purple-light) !important;
+}
+
+.slot-unavailable {
+  opacity: 0.3;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+/* Confirm */
+.confirm-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  animation: fade-in-up 0.4s ease;
+}
+
+.confirm-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.confirm-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.confirm-row:last-child { border-bottom: none; }
+
+.total-row {
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--border);
+  border-bottom: none;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+/* Success */
+.success-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-5);
+  animation: bounce-in 0.6s ease;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(16,185,129,0.15);
+  border: 2px solid rgba(16,185,129,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--routine);
+}
+
+.success-details { width: 100%; max-width: 400px; }
+
+.success-actions {
+  display: flex;
+  gap: var(--space-4);
+}
+
+@media (max-width: 768px) {
+  .appointment-layout { grid-template-columns: 1fr; }
+  .appt-doctor-card { position: static; }
+  .slots-grid { grid-template-columns: repeat(3, 1fr); }
+  .booking-progress { flex-wrap: wrap; }
+}

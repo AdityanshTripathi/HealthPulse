@@ -1,0 +1,258 @@
+/* ═══════════════════════════════════
+   Dashboard / Health Timeline
+   ═══════════════════════════════════ */
+
+.dashboard-page {
+  padding-top: 100px;
+  padding-bottom: var(--space-16);
+  min-height: 100vh;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-8);
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.header-user > div { display: flex; flex-direction: column; }
+
+.user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--grad-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Vitals Grid */
+.vitals-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
+}
+
+.vital-card {
+  animation: fade-in-up 0.5s ease both;
+}
+
+.vital-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-3);
+}
+
+.vital-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vital-trend {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.vital-value {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.vital-unit {
+  font-size: 0.85rem;
+  font-weight: 400;
+  margin-left: 4px;
+  opacity: 0.6;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-10);
+}
+
+/* Chart */
+.chart-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.chart-header h3 { font-size: 1rem; }
+
+.chart-tabs {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.chart-tab {
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-sans);
+}
+
+.chart-tab:hover { border-color: var(--border); color: var(--text-secondary); }
+
+.chart-tab-active {
+  border-color: var(--purple) !important;
+  color: var(--purple-light) !important;
+  background: rgba(124,58,237,0.1);
+}
+
+.chart-area { width: 100%; }
+
+/* Timeline */
+.timeline-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.timeline-card h3 { font-size: 1rem; }
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-item {
+  display: flex;
+  gap: var(--space-4);
+  animation: fade-in-up 0.4s ease both;
+}
+
+.timeline-dot-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.timeline-dot-emergency { background: var(--emergency); box-shadow: 0 0 8px rgba(239,68,68,0.4); }
+.timeline-dot-urgent { background: var(--urgent); box-shadow: 0 0 8px rgba(249,115,22,0.4); }
+.timeline-dot-routine { background: var(--routine); box-shadow: 0 0 8px rgba(16,185,129,0.4); }
+
+.timeline-line {
+  width: 2px;
+  flex: 1;
+  min-height: 20px;
+  background: var(--border-subtle);
+}
+
+.timeline-content {
+  flex: 1;
+  padding-bottom: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.timeline-date {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.timeline-symptoms {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.timeline-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.timeline-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--routine-light);
+}
+
+/* Medications */
+.meds-section h3 { margin-bottom: var(--space-5); }
+
+.meds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-4);
+}
+
+.med-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.med-emoji { font-size: 2rem; }
+
+.med-info { flex: 1; }
+.med-info h4 { font-size: 0.95rem; }
+
+.med-remaining {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 768px) {
+  .vitals-grid { grid-template-columns: repeat(2, 1fr); }
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .dashboard-header { flex-direction: column; gap: var(--space-4); }
+}
