@@ -20,7 +20,7 @@ const features = [
     icon: Brain,
     title: 'AI Symptom Analysis',
     desc: 'Advanced NLP engine processes your symptoms in real-time, providing medical-grade triage classification.',
-    color: '#7c3aed',
+    color: '#0C2924',
   },
   {
     icon: Shield,

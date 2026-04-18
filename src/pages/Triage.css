@@ -66,15 +66,15 @@
   position: relative;
 }
 
-.section-label svg { color: var(--purple-light); }
+.section-label svg { color: var(--primary); }
 
 .symptom-count {
   margin-left: auto;
   font-size: 0.75rem;
   font-weight: 600;
   padding: 3px 10px;
-  background: rgba(124,58,237,0.15);
-  color: var(--purple-light);
+  background: rgba(12,41,36,0.1);
+  color: var(--primary);
   border-radius: var(--radius-full);
 }
 
@@ -115,8 +115,8 @@
 }
 
 .detail-input:focus {
-  border-color: var(--purple);
-  box-shadow: 0 0 0 3px rgba(124,58,237,0.12);
+  border-color: #0C2924;
+  box-shadow: 0 0 0 3px rgba(12,41,36,0.1);
 }
 
 .detail-input::placeholder { color: var(--text-muted); }
@@ -144,9 +144,9 @@
 .gender-btn:hover { border-color: var(--border); color: var(--text-primary); }
 
 .gender-active {
-  background: rgba(124,58,237,0.15) !important;
-  border-color: var(--border-strong) !important;
-  color: var(--purple-light) !important;
+  background: rgba(12,41,36,0.1) !important;
+  border-color: #0C2924 !important;
+  color: #0C2924 !important;
 }
 
 /* Condition Chips */
@@ -172,9 +172,9 @@
 .condition-chip:hover { border-color: var(--border); }
 
 .condition-active {
-  background: rgba(124,58,237,0.12) !important;
-  border-color: var(--purple) !important;
-  color: var(--purple-light) !important;
+  background: rgba(12,41,36,0.08) !important;
+  border-color: #0C2924 !important;
+  color: #0C2924 !important;
 }
 
 .menstrual-field {
@@ -402,8 +402,8 @@
 }
 
 .custom-input:focus {
-  border-color: var(--purple);
-  box-shadow: 0 0 0 3px rgba(124,58,237,0.12);
+  border-color: #0C2924;
+  box-shadow: 0 0 0 3px rgba(12,41,36,0.1);
 }
 
 .custom-input::placeholder { color: var(--text-muted); }
@@ -424,7 +424,7 @@
   transition: all var(--transition-fast);
 }
 
-.voice-btn:hover { border-color: var(--purple); color: var(--purple-light); }
+.voice-btn:hover { border-color: #0C2924; color: #0C2924; }
 
 .voice-active {
   background: rgba(239,68,68,0.12) !important;
@@ -495,9 +495,9 @@
 .duration-btn:hover { border-color: var(--border); }
 
 .dur-active {
-  background: rgba(124,58,237,0.12) !important;
-  border-color: var(--purple) !important;
-  color: var(--purple-light) !important;
+  background: rgba(12,41,36,0.08) !important;
+  border-color: #0C2924 !important;
+  color: #0C2924 !important;
 }
 
 /* Severity Slider */
@@ -596,7 +596,7 @@
   left: 0;
   right: 0;
   z-index: 50;
-  background: rgba(7,7,17,0.92);
+  background: rgba(255,255,255,0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid var(--border-subtle);
@@ -648,7 +648,7 @@
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: rgba(7,7,17,0.95);
+  background: rgba(12,41,36,0.95);
   backdrop-filter: blur(30px);
   display: flex;
   align-items: center;
@@ -669,8 +669,8 @@
   width: 72px;
   height: 72px;
   border: 3px solid var(--border);
-  border-top-color: var(--purple);
-  border-right-color: var(--blue);
+  border-top-color: #0C2924;
+  border-right-color: #567470;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -701,9 +701,9 @@
 .a-step-done { color: var(--routine-light); }
 .a-step-done .a-dot { background: var(--routine); }
 
-.a-step-active { color: var(--purple-light); }
+.a-step-active { color: #0C2924; }
 .a-step-active .a-dot {
-  background: var(--purple);
+  background: #0C2924;
   animation: pulse-ring 1.5s ease-out infinite;
   position: relative;
 }

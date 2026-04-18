@@ -51,7 +51,7 @@ const medications = [
 
 const vitalCards = [
   { label: 'Heart Rate', value: '72', unit: 'bpm', icon: Heart, color: '#ef4444', trend: 'down', trendVal: '3%' },
-  { label: 'Blood Pressure', value: '120/80', unit: 'mmHg', icon: Activity, color: '#7c3aed', trend: 'stable', trendVal: '0%' },
+  { label: 'Blood Pressure', value: '120/80', unit: 'mmHg', icon: Activity, color: '#0C2924', trend: 'stable', trendVal: '0%' },
   { label: 'SpO2', value: '98', unit: '%', icon: Droplets, color: '#2563eb', trend: 'up', trendVal: '1%' },
   { label: 'Temperature', value: '98.2', unit: '°F', icon: Thermometer, color: '#10b981', trend: 'stable', trendVal: '0%' },
 ]
@@ -61,7 +61,7 @@ export default function Dashboard() {
 
   const chartConfig = {
     heartRate: { key: 'heartRate', color: '#ef4444', label: 'Heart Rate (bpm)' },
-    bp: { key: 'bp', color: '#7c3aed', label: 'Blood Pressure (systolic)' },
+    bp: { key: 'bp', color: '#0C2924', label: 'Blood Pressure (systolic)' },
     spo2: { key: 'spo2', color: '#2563eb', label: 'SpO2 (%)' },
     temp: { key: 'temp', color: '#10b981', label: 'Temperature (°F)' },
   }

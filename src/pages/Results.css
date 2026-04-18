@@ -158,7 +158,7 @@
   position: absolute;
   top: var(--space-4);
   right: var(--space-4);
-  color: var(--purple-light);
+  color: var(--primary);
   opacity: 0;
   transform: translateX(-8px);
   transition: all var(--transition-fast);

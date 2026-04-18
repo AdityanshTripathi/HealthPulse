@@ -12,9 +12,9 @@ import { useNavigate } from 'react-router-dom'
 import './AuthModal.css'
 
 const ROLES = [
-  { id: 'patient', label: 'Patient', icon: Heart, color: '#10b981', desc: 'Get AI health insights' },
-  { id: 'doctor', label: 'Doctor', icon: Stethoscope, color: '#4f46e5', desc: 'Manage your patients' },
-  { id: 'hospital', label: 'Hospital', icon: Building2, color: '#2563eb', desc: 'Hospital control center' },
+  { id: 'patient', label: 'Patient', icon: Heart, color: '#198754', desc: 'Get AI health insights' },
+  { id: 'doctor', label: 'Doctor', icon: Stethoscope, color: '#0C2924', desc: 'Manage your patients' },
+  { id: 'hospital', label: 'Hospital', icon: Building2, color: '#567470', desc: 'Hospital control center' },
 ]
 
 export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {

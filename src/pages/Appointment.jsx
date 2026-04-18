@@ -45,12 +45,12 @@ export default function Appointment() {
             <span className="step-circle">1</span>
             <span>Select Date & Time</span>
           </div>
-          <div className="progress-line" style={{ background: step >= 2 ? 'var(--purple)' : 'var(--border-subtle)' }} />
+          <div className="progress-line" style={{ background: step >= 2 ? '#0C2924' : 'var(--border-subtle)' }} />
           <div className={`progress-step ${step >= 2 ? 'step-active' : ''}`}>
             <span className="step-circle">2</span>
             <span>Confirm Details</span>
           </div>
-          <div className="progress-line" style={{ background: step >= 3 ? 'var(--purple)' : 'var(--border-subtle)' }} />
+          <div className="progress-line" style={{ background: step >= 3 ? '#0C2924' : 'var(--border-subtle)' }} />
           <div className={`progress-step ${step >= 3 ? 'step-active' : ''}`}>
             <span className="step-circle">3</span>
             <span>Booked!</span>

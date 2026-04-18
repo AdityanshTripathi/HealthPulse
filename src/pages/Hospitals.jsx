@@ -96,7 +96,7 @@ export default function Hospitals() {
                 </div>
               </div>
               <div className="map-legend">
-                <span className="legend-item"><span className="legend-dot" style={{ background: 'var(--purple)' }} /> Hospital</span>
+                <span className="legend-item"><span className="legend-dot" style={{ background: '#0C2924' }} /> Hospital</span>
                 <span className="legend-item"><span className="legend-dot" style={{ background: 'var(--routine)' }} /> Your Location</span>
               </div>
             </div>

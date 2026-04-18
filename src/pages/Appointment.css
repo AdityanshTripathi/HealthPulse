@@ -27,7 +27,7 @@
   color: var(--text-muted);
 }
 
-.step-active { color: var(--purple-light); }
+.step-active { color: #0C2924; }
 
 .step-circle {
   width: 28px;
@@ -44,7 +44,7 @@
 
 .step-active .step-circle {
   background: var(--grad-primary);
-  border-color: var(--purple);
+  border-color: #0C2924;
   color: #fff;
 }
 
@@ -125,9 +125,9 @@
 .type-btn:hover { border-color: var(--border); }
 
 .type-active {
-  background: rgba(124,58,237,0.12) !important;
-  border-color: var(--border-strong) !important;
-  color: var(--purple-light) !important;
+  background: rgba(12,41,36,0.08) !important;
+  border-color: #0C2924 !important;
+  color: #0C2924 !important;
 }
 
 /* Step Content */
@@ -203,7 +203,7 @@
   background: var(--grad-primary) !important;
   color: #fff !important;
   font-weight: 700;
-  box-shadow: var(--shadow-purple);
+  box-shadow: var(--shadow-md);
 }
 
 /* Time Slots */
@@ -231,9 +231,9 @@
 .slot-btn:hover:not(:disabled) { border-color: var(--border); color: var(--text-primary); }
 
 .slot-selected {
-  background: rgba(124,58,237,0.15) !important;
-  border-color: var(--border-strong) !important;
-  color: var(--purple-light) !important;
+  background: rgba(12,41,36,0.1) !important;
+  border-color: #0C2924 !important;
+  color: #0C2924 !important;
 }
 
 .slot-unavailable {

@@ -1,22 +1,23 @@
 /* ═══════════════════════════════════════════
    HOSPITAL DASHBOARD – THEME OVERRIDES
+   Healthcare Teal Theme
    ═══════════════════════════════════════════ */
 
 .hospital-sidebar {
-  background: #0b1628;
+  background: #0C2924;
 }
 
 .hospital-logo-icon {
-  background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+  background: linear-gradient(135deg, #567470, #3d8b7a) !important;
 }
 
 .hospital-sidebar .sidebar-link.active {
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+  background: linear-gradient(135deg, #567470, #3d8b7a);
+  box-shadow: 0 4px 12px rgba(86, 116, 112, 0.35);
 }
 
 .hospital-avatar {
-  background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+  background: linear-gradient(135deg, #567470, #3d8b7a) !important;
 }
 
 .hospital-role-badge {
@@ -25,10 +26,10 @@
   gap: 0.4rem;
   margin: 0 1.25rem;
   padding: 0.4rem 0.75rem;
-  background: rgba(37, 99, 235, 0.1);
-  border: 1px solid rgba(37, 99, 235, 0.2);
+  background: rgba(86, 116, 112, 0.12);
+  border: 1px solid rgba(86, 116, 112, 0.25);
   border-radius: 8px;
-  color: #60a5fa;
+  color: #7a9a96;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -39,7 +40,7 @@
 .emergency-panel {
   background: white;
   border-radius: 16px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-subtle);
   margin-bottom: 1.5rem;
   overflow: hidden;
 }
@@ -99,17 +100,17 @@
 .emergency-case-name {
   font-weight: 700;
   font-size: 0.95rem;
-  color: #1e293b;
+  color: var(--primary);
 }
 
 .emergency-case-time {
   font-size: 0.75rem;
-  color: #94a3b8;
+  color: var(--text-muted);
 }
 
 .emergency-case-condition {
   font-size: 0.85rem;
-  color: #64748b;
+  color: var(--secondary);
 }
 
 .emergency-case-bottom {
@@ -129,17 +130,17 @@
 /* Assignment Dropdown within Emergency Card */
 .assign-select {
   padding: 0.3rem 0.5rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   border-radius: 6px;
   font-size: 0.75rem;
-  color: #334155;
+  color: var(--primary);
   background: white;
   cursor: pointer;
 }
 
 .assign-select:focus {
   outline: none;
-  border-color: #2563eb;
+  border-color: #0C2924;
 }
 
 /* ── Patient Queue ── */
@@ -153,7 +154,7 @@
 .queue-column {
   background: white;
   border-radius: 16px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-subtle);
   overflow: hidden;
 }
 
@@ -211,15 +212,15 @@
   gap: 0.75rem;
   padding: 0.7rem;
   border-radius: 10px;
-  background: #f8fafc;
-  border: 1px solid #f1f5f9;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
   cursor: pointer;
   transition: all 0.15s;
 }
 
 .queue-item:hover {
-  background: #eef2ff;
-  border-color: #e0e7ff;
+  background: rgba(12,41,36,0.04);
+  border-color: var(--border);
 }
 
 .queue-item-info {
@@ -230,12 +231,12 @@
 .queue-item-name {
   font-weight: 600;
   font-size: 0.85rem;
-  color: #1e293b;
+  color: var(--primary);
 }
 
 .queue-item-symptoms {
   font-size: 0.75rem;
-  color: #94a3b8;
+  color: var(--text-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -258,14 +259,14 @@
 .load-card {
   background: white;
   border-radius: 16px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-subtle);
   padding: 1.5rem;
 }
 
 .load-card h4 {
   font-size: 0.9rem;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--primary);
   margin-bottom: 1rem;
 }
 
@@ -279,7 +280,7 @@
 .load-bar-label {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #475569;
+  color: var(--secondary);
   min-width: 80px;
 }
 
@@ -287,7 +288,7 @@
   flex: 1;
   height: 10px;
   border-radius: 5px;
-  background: #e2e8f0;
+  background: var(--bg-secondary);
   overflow: hidden;
 }
 
