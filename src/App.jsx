@@ -35,35 +35,46 @@ import HospitalPatients from './pages/hospital/HospitalPatients'
 import HospitalDoctors from './pages/hospital/HospitalDoctors'
 import HospitalAppointments from './pages/hospital/HospitalAppointments'
 
+// ─── Route Guards (defined OUTSIDE the component to avoid re-creation) ───
+function ProtectedRoute({ children }) {
+  const { session, loading } = useAuth()
+  if (loading) return <div className="app-loading"><div className="loading-spinner" /></div>
+  if (!session) return <Navigate to="/" replace />
+  return children
+}
+
+function RoleGate({ allowed, children }) {
+  const { session, role, loading } = useAuth()
+  if (loading) return <div className="app-loading"><div className="loading-spinner" /></div>
+  if (!session) return <Navigate to="/" replace />
+  if (!role) return <div className="app-loading"><div className="loading-spinner" /></div>
+  if (allowed && !allowed.includes(role)) {
+    // Redirect to the user's correct portal
+    if (role === 'admin') return <Navigate to="/admin" replace />
+    if (role === 'doctor') return <Navigate to="/app/doctor" replace />
+    if (role === 'hospital') return <Navigate to="/app/hospital" replace />
+    return <Navigate to="/app/dashboard" replace />
+  }
+  return children
+}
+
+function RoleRedirect() {
+  const { role, loading } = useAuth()
+  if (loading || !role) return <div className="app-loading"><div className="loading-spinner" /></div>
+  if (role === 'doctor') return <Navigate to="/app/doctor" replace />
+  if (role === 'hospital') return <Navigate to="/app/hospital" replace />
+  return <Navigate to="/app/dashboard" replace />
+}
+
 function App() {
   const [isAuthOpen, setIsAuthOpen] = useState(false)
   const [authTab, setAuthTab] = useState('login')
-  const { session, role, loading } = useAuth()
+  const { session } = useAuth()
   const location = useLocation()
 
   const openAuth = (tab = 'login') => {
     setAuthTab(tab)
     setIsAuthOpen(true)
-  }
-
-  // Route protection components
-  const ProtectedRoute = ({ children }) => {
-    if (loading) return null
-    if (!session) return <Navigate to="/" replace />
-    return children
-  }
-
-  const RoleGate = ({ allowed, children }) => {
-    if (loading) return null
-    if (!session) return <Navigate to="/" replace />
-    if (allowed && !allowed.includes(role)) {
-      // Redirect to appropriate dashboard based on actual role
-      if (role === 'admin') return <Navigate to="/admin" replace />
-      if (role === 'doctor') return <Navigate to="/app/doctor" replace />
-      if (role === 'hospital') return <Navigate to="/app/hospital" replace />
-      return <Navigate to="/app/dashboard" replace />
-    }
-    return children
   }
 
   // Hide navbar on /app and /admin routes
@@ -108,12 +119,8 @@ function App() {
           <Route path="hospital/doctors" element={<RoleGate allowed={['hospital']}><HospitalDoctors /></RoleGate>} />
           <Route path="hospital/appointments" element={<RoleGate allowed={['hospital']}><HospitalAppointments /></RoleGate>} />
 
-          {/* Default redirect based on role */}
-          <Route index element={
-            role === 'doctor' ? <Navigate to="/app/doctor" replace /> :
-            role === 'hospital' ? <Navigate to="/app/hospital" replace /> :
-            <Navigate to="/app/dashboard" replace />
-          } />
+          {/* Default /app → redirect based on role */}
+          <Route index element={<RoleRedirect />} />
         </Route>
 
         {/* ─── Admin Panel (Separate) ─── */}
