@@ -72,7 +72,7 @@ function App() {
   return (
     <div className="app">
       <Toaster position="top-right" />
-      {!isPortalRoute && <Navbar session={session} onAuthClick={openAuth} />}
+      {!isPortalRoute && <Navbar onAuthClick={openAuth} />}
 
       <Routes>
         {/* ─── Public Routes ─── */}

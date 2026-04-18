@@ -7,6 +7,7 @@ import {
 } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 import { supabase } from '../lib/supabaseClient'
+import { useAuth } from '../lib/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import './AuthModal.css'
 
@@ -19,6 +20,7 @@ const ROLES = [
 export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
   const [tab, setTab] = useState(initialTab)
   const navigate = useNavigate()
+  const { waitForRole } = useAuth()
 
   const [isLoading, setIsLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
@@ -75,6 +77,14 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
 
   const removeDept = (d) => setDepartments(prev => prev.filter(x => x !== d))
 
+  // Helper: redirect based on role
+  const redirectByRole = (userRole) => {
+    if (userRole === 'admin') navigate('/admin')
+    else if (userRole === 'doctor') navigate('/app/doctor')
+    else if (userRole === 'hospital') navigate('/app/hospital')
+    else navigate('/app/dashboard')
+  }
+
   // ── LOGIN ──
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -84,17 +94,12 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
       const { data, error } = await supabase.auth.signInWithPassword({ email: loginEmail, password: loginPassword })
       if (error) throw error
 
-      // Fetch role and redirect
-      const { data: profile } = await supabase.from('profiles').select('role').eq('id', data.user.id).single()
-      const userRole = profile?.role || 'patient'
+      // Wait for the AuthContext to fully resolve the role before navigating
+      const userRole = await waitForRole(data.user.id)
 
       toast.success('Welcome back!')
       onClose()
-
-      if (userRole === 'admin') navigate('/admin')
-      else if (userRole === 'doctor') navigate('/app/doctor')
-      else if (userRole === 'hospital') navigate('/app/hospital')
-      else navigate('/app/dashboard')
+      redirectByRole(userRole)
     } catch (err) {
       toast.error(err.message || 'Login failed.')
     } finally {
@@ -124,6 +129,9 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
       const userId = data.user?.id
       if (!userId) { toast.success('Check your email to confirm your account!'); onClose(); return }
 
+      // Small delay to let the DB trigger create the profile
+      await new Promise(resolve => setTimeout(resolve, 500))
+
       // Update profile with extra fields
       if (role === 'patient') {
         await supabase.from('profiles').update({
@@ -150,12 +158,12 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
         }])
       }
 
+      // Wait for the AuthContext to fully resolve the role before navigating
+      const fetchedRole = await waitForRole(userId)
+
       toast.success('Account created successfully!')
       onClose()
-
-      if (role === 'doctor') navigate('/app/doctor')
-      else if (role === 'hospital') navigate('/app/hospital')
-      else navigate('/app/dashboard')
+      redirectByRole(fetchedRole)
     } catch (err) {
       toast.error(err.message || 'Signup failed.')
     } finally {

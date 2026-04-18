@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState, useEffect, useCallback } from 'react'
 import { supabase } from './supabaseClient'
 
 const AuthContext = createContext(null)
@@ -9,32 +9,9 @@ export function AuthProvider({ children }) {
   const [role, setRole] = useState(null)
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    // Initial session load
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-      if (session?.user) fetchProfile(session.user.id)
-      else setLoading(false)
-    })
-
-    // Listen for auth state changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-      if (session?.user) {
-        fetchProfile(session.user.id)
-      } else {
-        setProfile(null)
-        setRole(null)
-        setLoading(false)
-      }
-    })
-
-    return () => subscription.unsubscribe()
-  }, [])
-
-  const fetchProfile = async (userId) => {
+  const fetchProfile = useCallback(async (userId) => {
     try {
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', userId)
@@ -43,6 +20,7 @@ export function AuthProvider({ children }) {
       if (data) {
         setProfile(data)
         setRole(data.role || 'patient')
+        return data.role || 'patient'
       } else {
         // Fallback: check user_roles table
         const { data: roleData } = await supabase
@@ -50,14 +28,40 @@ export function AuthProvider({ children }) {
           .select('role')
           .eq('user_id', userId)
           .single()
-        setRole(roleData?.role || 'patient')
+        const r = roleData?.role || 'patient'
+        setRole(r)
+        return r
       }
     } catch {
       setRole('patient')
+      return 'patient'
     } finally {
       setLoading(false)
     }
-  }
+  }, [])
+
+  useEffect(() => {
+    // Initial session load
+    supabase.auth.getSession().then(({ data: { session: s } }) => {
+      setSession(s)
+      if (s?.user) fetchProfile(s.user.id)
+      else setLoading(false)
+    })
+
+    // Listen for auth state changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, s) => {
+      setSession(s)
+      if (s?.user) {
+        fetchProfile(s.user.id)
+      } else {
+        setProfile(null)
+        setRole(null)
+        setLoading(false)
+      }
+    })
+
+    return () => subscription.unsubscribe()
+  }, [fetchProfile])
 
   const logout = async () => {
     await supabase.auth.signOut()
@@ -66,8 +70,13 @@ export function AuthProvider({ children }) {
     setRole(null)
   }
 
+  // Expose waitForRole for components that need to know the role before navigating
+  const waitForRole = useCallback(async (userId) => {
+    return await fetchProfile(userId)
+  }, [fetchProfile])
+
   return (
-    <AuthContext.Provider value={{ session, profile, role, loading, logout, refetchProfile: () => session?.user && fetchProfile(session.user.id) }}>
+    <AuthContext.Provider value={{ session, profile, role, loading, logout, waitForRole, refetchProfile: () => session?.user && fetchProfile(session.user.id) }}>
       {children}
     </AuthContext.Provider>
   )
